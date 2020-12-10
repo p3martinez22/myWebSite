@@ -1,0 +1,78 @@
+<html>
+<head> 
+<script language="JavaScript">
+
+var partsOfSpeech = ["Please enter a road ", "Please enter a body part ", "Please enter a animal", "Please enter a activity", "Please enter a object ", "Please enter a verb ", "please enter a location ", "Please enter a object ", "please enter a verb " ];
+var answers = new Array(partsOfSpeech.length);
+var story = ["Bob ran down ", ". In doing so he tripped and hit his ", ". With a broken knee he passed out. In his dream he saw a flying ", " that did ", ". He then awoke to find Billy poking him with a ", ". Billy seemed disapointed that Bob had awoken, but Bib got up and ", " home. His mother found him and took him to a ", ". There they gave Bob a ", " and told him not to trip anymore. Bob went home and decided to " ];
+var count = 0;
+
+function prompt()
+{
+	// if this is the start, display the textbox and hide the story. 
+	// then display the first element of partsOfSpeech in the textbox. 
+    document.getElementById("userEnter").style.visibility = "visible";
+    document.getElementById("story").style.visibility = "hidden";
+    document.getElementById("response").value = partsOfSpeech[count];
+}
+
+
+function getWords()
+{
+    var wordBox = document.getElementById("response");
+    answers[count] = wordBox.value;
+    
+    count++;
+    if( count < partsOfSpeech.length)
+    {
+        prompt();
+    }
+    else // done entering words. time to display story.
+    {
+        count = 0;
+        document.getElementById("story").innerHTML = displayStory();
+    }
+}
+
+function displayStory()
+{
+	var answer = "";
+	var i;
+	
+	// loop to stitch elements of story with elements of answers. 
+	
+	for ( i = 0; i< answers.length; i++)
+	{
+        answer = answer + story[i];
+        answer = answer + partsOfSpeech[i];
+	}
+	// if there's one more element in story than answers, then add the last element of answers
+    if( i < story.length)
+    {
+        answer = answer + story[i];
+    }
+	// Make the story div visible, and the userEnter div hidden.		
+    document.getElementById("story").style.visibility = "visible";
+    document.getElementById("userEnter").style.visibilty = "hidden";
+	// return the variable answer.
+    //alert(answer);
+    return answer; //passes back the variable answer
+}
+
+</script>
+</head>
+<body>
+<center> 
+<h1>My MadLib!</h1>
+<input id="daButton" type="button" value="start" onClick="prompt()"/>
+</center>
+<div id="userEnter" style="position:absolute; left:200; top: 100; visibility:hidden;">
+<input type = "text" id="response" value="" onfocusout="getWords()"/></p>
+</div>
+
+<div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+</div>
+
+</body>
+</html>
