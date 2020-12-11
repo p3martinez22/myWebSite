@@ -44,7 +44,7 @@ function displayStory()
 	for ( i = 0; i< answers.length; i++)
 	{
         answer = answer + story[i];
-        answer = answer + partsOfSpeech[i];
+        answer = answer + answers[i];
 	}
 	// if there's one more element in story than answers, then add the last element of answers
     if( i < story.length)
@@ -73,6 +73,6 @@ function displayStory()
 <div id="story" style="position:absolute; overflow:scroll; top:300; left:200; width:400; height: 200; visibility:hidden">
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 </div>
-
+Click here to <a href="index.html"> return to homepage.</a>
 </body>
 </html>
