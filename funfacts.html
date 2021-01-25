@@ -1,0 +1,104 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1. Make a way to identify which element of group is chosen
+2. Create lists
+3. Display the correct fact with the chosen option
+4. Figure out what's broken
+5. Display fact when option is picked and click is hit
+6. Way to connect list of group to corresponding facts
+7.
+8. 
+ 
+*/
+// Create an array of at least additional 8 items
+
+var group = ["-- Choose a Food --", "Sandwiches", "Tacos", "Pizza", "Chilaquiles", "Bolillo", "Concha", "Mantecada", "Chicharrones"];
+// Add at least 8 fun facts corresponding to the item
+var facts = ["-- No food selected --", "Come in many diffrent forms, Tuna is obviouly the BEST kind", "Tortilla with stuff inside of it", "Itallian circle with pasta sauce and cheese along side other toppings--like pineapple", "Tortilla chips cooked with a sauce to make enchilada type thing", "Short baguett, you can put stuff inside them", "Pastry with a bread and sugar layer", "Muffins, usually turn out yellow--I'm not too sure why", "Fried pork skin, tastes suprisingly decent"];
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("food");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+    
+	// Writ the code that wil store the selection object ("food") in a variable called selection. 
+    var selection = document.getElementById("food");
+    
+    // write code that will store the index of the users selection in a variable called daIndex
+    var daIndex = getIndex(selection.value);
+    //write an if-statement that tests if daIndext is -1. If so, alert an error has occured. If daIndex is not -1 , displeay the fun fact
+    if(daIndex == -1)
+    {
+        alert("error")
+    }
+    else
+    {
+    document.getElementById("funFact").value = facts[daIndex];
+    }
+    //alert(selection.value);
+    
+    //alert(getIndex("Sandwiches"));
+    // Write code that displays the cooresponding element of facts in the "funFact" text box
+    
+    
+    
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d) // var d = hello
+{
+    var answer = -1; // invalid index value.
+    
+    //Write a for loop that traverses the entire group array once
+    for( var i = 0; i < group.length; i++)
+    {
+        //write an if statement that tests if the element at i equals the parameter passed in the getIndex function.
+        if(group[i] == d) // d is found at index i
+        {
+            answer = i;
+        }
+    }
+    
+    return answer;
+}
+
+
+
+</script>
+</head>
+<body onload="loadData()" bgcolor="pink"> 
+<center>
+<h1>Food Fun Facts</h1>
+Click here <a href="index.html"> to return to my home page. </a>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="food"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="click" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
