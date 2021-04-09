@@ -1,0 +1,57 @@
+<html>
+<head>
+<style>
+/*canvas {background-color:powderblue;}
+</style>
+<style> 
+#can {
+  /*width: 300px;
+  height: 200px;*/
+  background: red;
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  from {background-color: red;}
+  to {background-color: blue;}
+}
+</style>
+<title>Draw a circle in canvas</title>
+</head>
+<canvas id="can" width="1000" height="1000" style="color:black;"></canvas>
+<body>
+    <canvas id="canvas"></canvas>
+</body>
+</html>
+<script>
+var c = document.getElementById('can');
+var ctx = c.getContext("2d");
+let x = 40;
+let y = 40;
+let goLeft=false;
+circle(2, 1);
+beginAnim();
+function circle(t, w)
+{
+    var i = 1;
+    
+        
+        ctx.beginPath();
+        ctx.arc(x,y,40,0,2 * Math.PI);
+        ctx.stroke();
+        ctx.fillStyle = "red";
+        ctx.fill();
+        while(i < 100)
+        {
+        x = x+1;
+        i++;
+        }
+        
+        ctx.beginPath();
+        ctx.arc(800,800,20,0,2 * Math.PI);
+        ctx.stroke();
+        ctx.fillStyle = "blue";
+        ctx.fill();
+}
+
+</script>
